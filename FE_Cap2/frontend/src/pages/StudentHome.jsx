@@ -15,10 +15,10 @@ const StudentHome = () => {
         <img alt="Logo" src="https://placehold.co/50x50" />
         <div className={styles.searchContainer}>
           <input placeholder="Tìm kiếm" type="text" />
-          {/* <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} /> */}
+          <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
         </div>
         <div className={styles.navIcons}>
-          {/* <FontAwesomeIcon icon={faHome} /> */}
+          <FontAwesomeIcon icon={faHome} />
           <span>Trang chủ</span>
           <FontAwesomeIcon icon={faBell} />
           <span>Thông báo</span>
