@@ -1,179 +1,133 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    background-color: #b3e5fc;
-  }
-  
-  .header {
-    background-color: white;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .searchContainer {
-    position: relative;
-    width: 200px;
-  }
-  
-  .searchContainer input {
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding-right: 30px;
-  }
-  
-  .searchIcon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #ccc;
-  }
-  
-  .navIcons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navIcons i {
-    margin: 0 10px;
-    font-size: 20px;
-  }
-  
-  .userInfo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .userInfo img {
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .content {
-    background-color: white;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .studentInfo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .studentInfo img {
-    height: 100px;
-    margin-right: 20px;
-  }
-  
-  .details {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .details div {
-    width: 50%;
-    margin-bottom: 10px;
-  }
-  
-  .value {
-    font-weight: 400;
-  }
-  
-  .cards {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .card {
-    background-color: white;
-    width: 23%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #555;
-  }
-  
-  .red {
-    background-color: #d32f2f;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-  }
-  
-  .red:hover {
-    background-color: #b71c1c;
-  }
-  
-  .orange {
-    background-color: #f57c00;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-  }
-  
-  .orange:hover {
-    background-color: #e65100;
-  }
-  
-  .blue {
-    background-color: #1976d2;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-  }
-  
-  .blue:hover {
-    background-color: #0d47a1;
-  }
-  
-  .green {
-    background-color: #388e3c;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-  }
-  
-  .green:hover {
-    background-color: #1b5e20;
-  }
-  
-  @media (max-width: 768px) {
-    .cards {
-      flex-direction: column;
-      align-items: center;
-    }
-    .card {
-      width: 80%;
-      margin-bottom: 20px;
-    }
-  }
-  
+/* General Styles */
+.studentHome {
+  background-color: #ebf2ff;
+  min-height: 100vh;
+  background-color: #B8E2FA;
+}
+
+.studentInfo {
+  padding: 20px;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.infoHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.studentAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.detailLink {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+}
+
+.detailLink:hover {
+  text-decoration: underline;
+}
+
+.infoText h2 {
+  margin-bottom: 10px;
+}
+
+.infoGrid {
+  display: flex;
+  gap: 20px;
+}
+
+.infoColumn {
+  flex: 1;
+}
+
+.infoColumn p {
+  padding: 5px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.infoColumn p:last-child {
+  border-bottom: none;
+}
+
+.infoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Chia thành 2 cột bằng nhau */
+  gap: 10px 30px; /* Khoảng cách giữa các dòng và cột */
+  padding-left: 20px;
+}
+
+.infoContainer p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.infoContainer strong {
+  min-width: 120px; /* Cố định độ rộng nhãn */
+  display: inline-block;
+  padding-right: 10px;
+  text-align: left;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.featureCard {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featureCard .icon {
+  font-size: 30px;
+  color: #D22F2F;
+}
+
+.featureCard h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.featureCard p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.featureCard a {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.featureCard a:hover {
+  text-decoration: underline;
+}
+
+.featureCard button {
+  background-color: #D22F2F;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+} 

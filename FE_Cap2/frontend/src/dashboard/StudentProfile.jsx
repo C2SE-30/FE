@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./StudentProfile.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBell, faSearch, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../component/Navbar";
+import Menu from "../component/Menu";
 
 const StudentProfile = () => {
   return (
     <div className={styles.container}>
       {/* Header */}
       <NavBar />
+      <Menu/>
       {/* Main Content */}
       <div className={styles.mainContent}>
         {/* Thông tin học vấn */}

@@ -1,0 +1,74 @@
+/* Định dạng toàn bộ container */
+.container {
+    position: absolute; /* Để menu có thể di chuyển tự do */
+    width: 50px;
+    height: 50px;
+    cursor: grab; /* Hiển thị biểu tượng bàn tay khi di chuột qua */
+    z-index: 1000; /* Đảm bảo menu nằm trên các thành phần khác */
+}
+
+/* Icon menu */
+.menuIcon {
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 24px;
+    cursor: grab;
+    border: 1px solid #333;
+}
+
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 60px; /* Hiển thị ngay dưới menu */
+    left: 0;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    background-color: #A0A6B1;
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+}
+
+.sidebar li {
+    text-shadow: -1px -1px 0 black,  
+                 1px -1px 0 black,  
+                -1px  1px 0 black,  
+                 1px  1px 0 black;
+}
+
+.sidebar li:last-child {
+    border-bottom: none;
+}
+
+.sidebar li:hover {
+    background: #95080E;
+}
+
+/* Mục đang được chọn */
+.active {
+    background: darkred;
+    color: white;
+}
