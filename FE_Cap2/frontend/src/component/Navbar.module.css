@@ -47,11 +47,13 @@
     gap: 10px;
     font-size: 20px;
     cursor: pointer;
+    padding-left: 20px;
   }
   
   .userInfo {
     display: flex;
     align-items: center;
+    padding-right: 30px;
   }
   
   .userAvatar {
@@ -66,3 +68,50 @@
     padding-bottom: 10px;
     cursor: pointer;
   }
+
+  .notificationContainer {
+    position: relative;
+}
+
+.notificationDropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Giảm chiều rộng */
+    z-index: 1000;
+    border-radius: 5px; /* Bo góc */
+    font-size: 14px; /* Giảm kích thước chữ */
+}
+
+.notificationDropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px; /* Giảm padding */
+}
+
+.notificationDropdown li {
+    padding: 6px 8px; /* Giảm padding */
+    border-bottom: 1px solid #f0f0f0; /* Màu viền nhẹ hơn */
+}
+
+.notificationDropdown li:last-child {
+    border-bottom: none; /* Loại bỏ viền cuối */
+}
+
+.notificationDropdown button {
+    width: 100%;
+    padding: 8px; /* Giảm padding */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* Giảm kích thước chữ */
+    border-radius: 3px; /* Bo góc nút */
+}
+
+.notificationDropdown button:hover {
+    background-color: #0056b3;
+}
