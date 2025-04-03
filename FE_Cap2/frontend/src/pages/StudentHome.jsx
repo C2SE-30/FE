@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./StudentHome.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faEnvelopeOpenText, faComments, faBook } from "@fortawesome/free-solid-svg-icons";
+import { faChartLine, faEnvelopeOpenText, faComments, faBook, faBell } from "@fortawesome/free-solid-svg-icons";  // Thêm faBell ở đây
 import NavBar from "../component/Navbar";
 import Menu from "../component/Menu";
 
@@ -14,7 +14,7 @@ const StudentHome = () => {
       
       {/* Main Content */}
       <main className={styles.container}>
-        <div className={styles.header}>
+        {/* <div className={styles.header}>
           <img alt="Logo" src="https://placehold.co/50x50" />
           <div className={styles.searchContainer}>
             <input placeholder="Tìm kiếm" type="text" />
@@ -28,10 +28,10 @@ const StudentHome = () => {
             <img alt="User Avatar" src="https://placehold.co/40x40" />
             <span>NGUYỄN THỊ THU THẢO</span>
           </div>
-        </div>
+        </div> */}
         
         <div className={styles.content}>
-          <h2>Thông tin sinh viên</h2>
+          {/* <h2>Thông tin sinh viên</h2> */}
           <div className={styles.studentInfo}>
             <div className={styles.infoHeader}>
               <div className={styles.avatarContainer}>
