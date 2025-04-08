@@ -1,36 +1,36 @@
 import React from "react";
-import styles from "./StudentHome.module.css";
+import styles from "./TeacherHome.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faEnvelopeOpenText, faComments, faBook} from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../component/Navbar";
 import Menu from "../component/Menu";
 
-const StudentHome = () => {
+const TeacherHome = () => {
   return (
-    <div className={styles.studentHome}>
+    <div className={styles.teacherHome}>
       {/* Header */}
       <NavBar />
       <Menu />
       {/* Main Content */}
       <main className={styles.container}>
-        <div className={styles.studentInfo}>
+        <div className={styles.teacherInfo}>
           <div className={styles.infoHeader}>
             <div className={styles.avatarContainer}>
               <img
-                src={require('../image/sinhvien.png')}
+                src={require('../image/covan.png')}
                 alt="Student avatar"
-                className={styles.studentAvatar}
+                className={styles.teacherAvatar}
               />
               <a href="#" className={styles.detailLink}>
                 Xem chi tiết
               </a>
             </div>
             <div className={styles.infoText}>
-              <h2>Thông tin sinh viên</h2>
+              <h2>Thông tin giảng viên</h2>
               <div className={styles.infoContainer}>
                 <div>
                   <p>
-                    <strong>MSSV:</strong> 27201203058
+                    <strong>MSGV:</strong> 27201203058
                   </p>
                   <p>
                     <strong>Họ tên:</strong> Nguyễn Thị Thu Thảo
@@ -50,13 +50,16 @@ const StudentHome = () => {
                     <strong>Số điện thoại:</strong> 0703964705
                   </p>
                   <p>
-                    <strong>Lớp học:</strong> K27CMU-TTT
+                    <strong>Học vị:</strong> Thạc sĩ
                   </p>
                   <p>
-                    <strong>Ngành:</strong> Hệ Thống Thông Tin Quản Lý
+                    <strong>Vị trí làm việc:</strong> Thạc sĩ - Khoa
                   </p>
                   <p>
-                    <strong>Bậc đào tạo:</strong> Đại học
+                    <strong>Ngành đào tạo:</strong> Khoa học dữ liệu
+                  </p>
+                  <p>
+                    <strong>Bộ môn giảng dạy:</strong> Cấu trúc dữ liệu
                   </p>
                 </div>
               </div>
@@ -68,20 +71,20 @@ const StudentHome = () => {
         <div className={styles.featureGrid}>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faEnvelopeOpenText} className={styles.icon} />
-            <h3>Thông báo & Gợi ý</h3>
-            <p>Nhận thông báo & gợi ý cải thiện</p>
-            <button href="#">Xem thông báo</button>
+            <h3>Danh sách sinh viên</h3>
+            <p>Xem danh sách sinh viên và trạng thái học tập</p>
+            <button href="#">Xem chi tiết</button>
           </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faComments} className={styles.icon} />
-            <h3>Phản hồi & Hành động</h3>
-            <p>Trả lời thông báo & thực hiện hành động</p>
+            <h3>Phân tích nguy cơ bỏ học</h3>
+            <p>Phân tích nguy cơ bỏ học & nhận dự đoán chi tiết</p>
             <button href="#">Thực hiện ngay</button>
           </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faBook} className={styles.icon} />
-            <h3>Cải thiện học tập</h3>
-            <p>Đề xuất tài liệu & hỗ trợ học tập</p>
+            <h3>Hỗ trợ & lập kế hoạch</h3>
+            <p>Hỗ trợ học tập & kế hoạch cải thiện</p>
             <button href="#">Khám phá ngay</button>
           </div>
         </div>
@@ -90,4 +93,4 @@ const StudentHome = () => {
   );
 };
 
-export default StudentHome;
+export default TeacherHome;

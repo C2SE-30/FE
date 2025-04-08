@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <header className={styles.header}>
       <img
-        src="https://storage.googleapis.com/a1aa/image/95aVyRXrKdQts8tbfEJCaghbiOrvZ_1iG0muJQol6lw.jpg"
+        src={require('../image/PAI.LOGO.png')}
         alt="Logo"
         className={styles.logo}
         onClick={() => navigate('/')}
