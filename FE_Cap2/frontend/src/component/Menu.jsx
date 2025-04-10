@@ -47,7 +47,6 @@ const Menu = () => {
         <div className={styles.sidebar}>
           <ul>
             <li>Thông tin cá nhân</li>
-            <li>Kết quả học tập</li>
             <li>Thông báo & gợi ý</li>
             <li>Cải thiện học tập</li>
           </ul>

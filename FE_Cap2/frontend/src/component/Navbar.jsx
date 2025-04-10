@@ -27,8 +27,10 @@ const NavBar = () => {
       <div className={styles.icons}>
         <FontAwesomeIcon icon={faHome} /> <span>Trang chủ</span>
         <div className={styles.notificationContainer}>
+        <div className={styles.icons}>
           <FontAwesomeIcon icon={faBell} onClick={toggleNotifications} className={styles.notificationIcon} />
           <span>Thông báo</span>
+            </div>
           {showNotifications && (
             <div className={styles.notificationDropdown}>
               <ul>

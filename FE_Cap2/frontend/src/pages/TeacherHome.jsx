@@ -4,8 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faEnvelopeOpenText, faComments, faBook} from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../component/Navbar";
 import Menu from "../component/Menu";
+import { useNavigate } from "react-router-dom";
 
 const TeacherHome = () => {
+  const navigate = useNavigate();
+  const handlePredict = () => {
+    // Navigate to the prediction page
+    navigate("/predictstudent");
+  };
   return (
     <div className={styles.teacherHome}>
       {/* Header */}
@@ -79,7 +85,7 @@ const TeacherHome = () => {
             <FontAwesomeIcon icon={faComments} className={styles.icon} />
             <h3>Phân tích nguy cơ bỏ học</h3>
             <p>Phân tích nguy cơ bỏ học & nhận dự đoán chi tiết</p>
-            <button href="#">Thực hiện ngay</button>
+            <button href="#" onClick={handlePredict}>Thực hiện ngay</button>
           </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faBook} className={styles.icon} />
