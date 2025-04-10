@@ -8,7 +8,7 @@
   }
   
   .logo {
-    height: 50px;
+    height: 40px;
     cursor: pointer;
   }
   
@@ -94,7 +94,7 @@
 
 .notificationDropdown li {
     padding: 6px 8px; /* Giảm padding */
-    border-bottom: 1px solid #f0f0f0; /* Màu viền nhẹ hơn */
+    border-bottom: 1px solid #A0A6B1; /* Màu viền nhẹ hơn */
 }
 
 .notificationDropdown li:last-child {
@@ -104,7 +104,7 @@
 .notificationDropdown button {
     width: 100%;
     padding: 8px; /* Giảm padding */
-    background-color: #007bff;
+    background-color: #A0A6B1;
     color: white;
     border: none;
     cursor: pointer;
@@ -113,5 +113,5 @@
 }
 
 .notificationDropdown button:hover {
-    background-color: #0056b3;
+    background-color: #95080E;
 }
