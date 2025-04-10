@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <header className={styles.header}>
       <img
-        src="https://storage.googleapis.com/a1aa/image/95aVyRXrKdQts8tbfEJCaghbiOrvZ_1iG0muJQol6lw.jpg"
+        src={require('../image/PAI.LOGO.png')}
         alt="Logo"
         className={styles.logo}
         onClick={() => navigate('/')}
@@ -27,8 +27,10 @@ const NavBar = () => {
       <div className={styles.icons}>
         <FontAwesomeIcon icon={faHome} /> <span>Trang chủ</span>
         <div className={styles.notificationContainer}>
+        <div className={styles.icons}>
           <FontAwesomeIcon icon={faBell} onClick={toggleNotifications} className={styles.notificationIcon} />
           <span>Thông báo</span>
+            </div>
           {showNotifications && (
             <div className={styles.notificationDropdown}>
               <ul>

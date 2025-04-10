@@ -1,219 +1,141 @@
-/* Base styles */
-.container {
-    max-width: 1024px;
+/* General Styles */
+.teacherAdvise {
+    background-color: #ebf2ff;
+    min-height: 100vh;
+    background-color: #B8E2FA;
+  }
+  
+  .container {
+    min-height: 100vh;
     margin: 0 auto;
-    padding: 1rem;
-    background-color: #f3f4f6;
+    padding: 20px;
   }
   
   .title {
     text-align: center;
-    font-size: 1.5rem;
+    color: #2c3e50;
+    font-size: 24px;
     font-weight: bold;
-    color: #2563eb;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
   }
   
-  /* Panel styles */
-  .panel {
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+  .requestSection, .confirmedSection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
   }
   
-  .panelHeader {
+  .header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 10px;
+    margin-bottom: 20px;
   }
   
-  .panelHeader i {
-    color: #3b82f6;
-    margin-right: 0.5rem;
-  }
-  
-  .panelHeader h2 {
-    font-size: 1.125rem;
-    font-weight: 600;
+  .icon {
+    color: #007bff;
   }
   
   .badge {
-    margin-left: 0.5rem;
-    background-color: #ef4444;
+    background: red;
     color: white;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    padding: 0 0.5rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
   }
   
-  /* Request item styles */
-  .requestsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .requestItem {
-    background-color: #dbeafe;
-    padding: 1rem;
-    border-radius: 0.5rem;
+  .requestCard, .confirmedCard {
+    padding: 15px;
+    border-radius: 8px;
+    background: #e3f2fd;
+    margin-bottom: 10px;
   }
   
   .requestHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
   }
   
   .studentName {
-    font-weight: 600;
+    font-weight: bold;
   }
   
-  .studentId {
-    color: #6b7280;
-  }
-  
-  .consultationTag {
-    background-color: #3b82f6;
+  .tag {
+    background: #007bff;
     color: white;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    padding: 0 0.5rem;
-    display: inline-block;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 15px;
   }
   
-  .requestHeader i {
-    color: #6b7280;
+  .toggleIcon {
+    color: gray;
     cursor: pointer;
   }
   
-  /* Form styles */
-  .formHidden {
-    display: none;
+  .formContainer {
+    margin-top: 10px;
   }
   
-  .formVisible {
-    display: block;
-    margin-top: 1rem;
-  }
-  
-  .formGroup {
-    margin-bottom: 1rem;
-  }
-  
-  .formGroup label {
-    display: block;
-    color: #374151;
-    font-size: 0.875rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .formGroup input {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    appearance: none;
-    border: 1px solid #d1d5db;
-    border-radius: 0.25rem;
+  .input {
     width: 100%;
-    padding: 0.5rem 0.75rem;
-    color: #374151;
-    line-height: 1.25;
-  }
-  
-  .formGroup input:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
   }
   
   .confirmButton {
-    background-color: #3b82f6;
+    background: #007bff;
     color: white;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    padding: 0.25rem 1rem;
+    padding: 10px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    width: 100%;
   }
   
-  /* Appointment item styles */
-  .appointmentsContainer {
+  .confirmButton:hover {
+    background: #0056b3;
+  }
+  
+  .subTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .time, .location {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .actions {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
+    margin-top: 10px;
   }
   
-  .appointmentItem {
-    padding: 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
-  }
-  
-  .appointmentHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .consultationType {
-    font-size: 0.875rem;
-    color: #6b7280;
-  }
-  
-  .appointmentTime {
-    text-align: right;
-  }
-  
-  .appointmentDate {
-    font-size: 0.875rem;
-    color: #10b981;
-  }
-  
-  .appointmentLocation {
-    font-size: 0.875rem;
-    color: #6b7280;
-  }
-  
-  .appointmentActions {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .messageButton {
-    background-color: white;
-    color: #3b82f6;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    padding: 0.25rem 1rem;
-    border: 1px solid #3b82f6;
-    display: flex;
-    align-items: center;
+  .messageButton, .rescheduleButton {
+    background: white;
+    border: 1px solid blue;
+    color: blue;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .messageButton i {
-    margin-right: 0.5rem;
   }
   
   .rescheduleButton {
-    background-color: #f59e0b;
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    padding: 0.25rem 1rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    background: yellow;
+    color: black;
   }
   
-  .rescheduleButton i {
-    margin-right: 0.5rem;
+  .messageButton:hover, .rescheduleButton:hover {
+    opacity: 0.8;
   }
+  

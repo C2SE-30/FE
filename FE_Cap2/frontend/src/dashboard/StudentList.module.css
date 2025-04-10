@@ -1,0 +1,102 @@
+.body {
+    background-color: #B8E2FA;
+    font-family: Arial, sans-serif;
+  }
+  .main{
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table a {
+    color: #4b5563;
+    text-decoration: none;
+  }
+
+  .table a:hover {
+    text-decoration: underline;
+  }
+  
+  .normal {
+    color: #111827;
+  }
+  
+  .yellow {
+    color: #d97706;
+  }
+  
+  .red {
+    color: #dc2626;
+  }
+  
+  .orange {
+    color: #ea580c;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .pagination button {
+    background: none;
+    border: none;
+    color: #4b5563;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+  }
