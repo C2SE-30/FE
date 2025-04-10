@@ -5,6 +5,12 @@
   background-color: #B8E2FA;
 }
 
+.container {
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .studentInfo {
   padding: 20px;
   margin-top: 20px;

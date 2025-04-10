@@ -6,6 +6,7 @@ import Login from "./auth/Login";
 import TeacherAdvise from "./dashboard/TeacherAdvise";
 import TeacherHome from "./pages/TeacherHome";
 import PredictStudent from "./dashboard/PredictStudent";
+import StudentList from "./dashboard/StudentList";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/advise" element={<TeacherAdvise />} />
         <Route path="/teacherhome" element={<TeacherHome />} />
         <Route path="/predictstudent" element={<PredictStudent />} />
+        <Route path="studentlist" element={<StudentList />} />
       </Routes>
     </Router>
   );
