@@ -7,6 +7,10 @@ import TeacherAdvise from "./dashboard/TeacherAdvise";
 import TeacherHome from "./pages/TeacherHome";
 import PredictStudent from "./dashboard/PredictStudent";
 import StudentList from "./dashboard/StudentList";
+import Notifications from "./dashboard/Notifications";
+import ChatAI from "./dashboard/ChatAI";
+import ImproveLearn from "./dashboard/ImproveLearn";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -19,6 +23,10 @@ function App() {
         <Route path="/teacherhome" element={<TeacherHome />} />
         <Route path="/predictstudent" element={<PredictStudent />} />
         <Route path="/studentlist" element={<StudentList />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/chat" element={<ChatAI />} />
+        <Route path="/improve" element={<ImproveLearn />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );
