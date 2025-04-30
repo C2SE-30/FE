@@ -1,16 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  // const [showPassword, setShowPassword] = useState(false);
-
-  //   const togglePasswordVisibility = () => {
-  //       setShowPassword(!showPassword);
-  //   };
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -18,10 +13,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
+    setError("");
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,13 +24,31 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Đăng nhập không thành công. Vui lòng kiểm tra thông tin đăng nhập của bạn.");
+        throw new Error(data.error || "Đăng nhập không thành công.");
       }
 
-      const data = await response.json();
       console.log("Login successful:", data);
-      // Handle successful login (e.g., save token, redirect)
+
+      // Lưu thông tin người dùng vào localStorage
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // Điều hướng dựa trên vai trò (role)
+      switch (data.user.role) {
+        case "Student":
+          navigate("/studenthome");
+          break;
+        case "Advisor":
+          navigate("/teacherhome");
+          break;
+        case "Admin":
+          navigate("/admin");
+          break;
+        default:
+          throw new Error("Vai trò không hợp lệ.");
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -47,13 +60,13 @@ const Login = () => {
         <h2 className={styles.title}>Đăng nhập</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label htmlFor="username">Tên đăng nhập</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              id="username"
-              name="username"
+              id="email"
+              name="email"
               className={styles.input}
-              value={formData.username}
+              value={formData.email}
               onChange={handleChange}
             />
           </div>

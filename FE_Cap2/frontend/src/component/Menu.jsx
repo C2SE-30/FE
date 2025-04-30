@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import styles from "./Menu.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
+  const navigate = useNavigate();
   const menuRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isSidebarVisible, setIsSidebarVisible] = useState(false); // Quản lý hiển thị bảng
@@ -46,8 +48,8 @@ const Menu = () => {
       {isSidebarVisible && (
         <div className={styles.sidebar}>
           <ul>
-            <li>Thông tin cá nhân</li>
-            <li>Thông báo & gợi ý</li>
+            <li onClick={() => navigate('/profile')}>Thông tin cá nhân</li>
+            <li onClick={() => navigate('/notifications')}>Thông báo & gợi ý</li>
             <li>Cải thiện học tập</li>
           </ul>
         </div>

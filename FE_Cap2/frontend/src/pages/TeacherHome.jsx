@@ -79,7 +79,7 @@ const TeacherHome = () => {
             <FontAwesomeIcon icon={faEnvelopeOpenText} className={styles.icon} />
             <h3>Danh sách sinh viên</h3>
             <p>Xem danh sách sinh viên và trạng thái học tập</p>
-            <button href="#">Xem chi tiết</button>
+            <button href="#" onClick={() => navigate('/studentlist')}>Xem chi tiết</button>
           </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faComments} className={styles.icon} />
@@ -91,7 +91,7 @@ const TeacherHome = () => {
             <FontAwesomeIcon icon={faBook} className={styles.icon} />
             <h3>Hỗ trợ & lập kế hoạch</h3>
             <p>Hỗ trợ học tập & kế hoạch cải thiện</p>
-            <button href="#">Khám phá ngay</button>
+            <button href="#" onClick={() => navigate('/advise')}>Khám phá ngay</button>
           </div>
         </div>
       </main>
