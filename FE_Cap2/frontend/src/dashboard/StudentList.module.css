@@ -71,19 +71,23 @@
   }
   
   .normal {
-    color: #111827;
+    color: green;
+    font-weight: bold;
   }
-  
+
   .yellow {
-    color: #d97706;
+    color: orange;
+    font-weight: bold;
   }
-  
+
   .red {
-    color: #dc2626;
+    color: red;
+    font-weight: bold;
   }
-  
+
   .orange {
-    color: #ea580c;
+    color: darkorange;
+    font-weight: bold;
   }
   
   .pagination {

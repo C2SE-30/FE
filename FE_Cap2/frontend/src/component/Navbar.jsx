@@ -14,10 +14,11 @@ const NavBar = () => {
     setShowNotifications(!showNotifications);
   };
 
+  // Fetch user information
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        // Lấy user từ localStorage (sau khi login lưu vào)
+        // Get user from localStorage
         const storedUser = JSON.parse(localStorage.getItem("user"));
         if (!storedUser) {
           navigate("/studenthome");
@@ -36,23 +37,96 @@ const NavBar = () => {
         }
 
         const data = await response.json();
-        setUserInfo(data.student); // gán student vào userInfo
+        setUserInfo(data.student);
       } catch (error) {
         console.error("Lỗi khi lấy thông tin người dùng:", error);
       }
     };
 
-    // 🛠 Tạm thời notifications giả lập (vì BE chưa có API /notifications)
+    // Fetch notifications
     const fetchNotifications = async () => {
-      setNotifications([
-        { id: 1, message: "Thông báo 1: Chào mừng bạn đến hệ thống!" },
-        { id: 2, message: "Thông báo 2: Cập nhật hồ sơ cá nhân." }
-      ]);
+      try {
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        if (!storedUser?.id) return;
+
+        const response = await fetch(`http://localhost:5000/notifications?user_id=${storedUser.id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Không thể lấy thông báo");
+        }
+
+        const data = await response.json();
+        setNotifications(data.notifications || []);
+      } catch (error) {
+        console.error("Lỗi khi lấy thông báo:", error);
+        setNotifications([]);
+      }
     };
 
     fetchUserInfo();
     fetchNotifications();
   }, [navigate]);
+
+  // Mark notification as read
+  const markNotificationAsRead = async (notificationId) => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (!storedUser?.id) return;
+
+      const response = await fetch(`http://localhost:5000/notifications/${notificationId}/read?user_id=${storedUser.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Không thể đánh dấu thông báo là đã đọc");
+      }
+
+      // Update notification status to read
+      setNotifications((prevNotifications) =>
+        prevNotifications.map((notification) =>
+          notification.id === notificationId
+            ? { ...notification, is_read: true }
+            : notification
+        )
+      );
+    } catch (error) {
+      console.error("Lỗi khi đánh dấu thông báo là đã đọc:", error);
+    }
+  };
+
+  // Delete notification
+  const deleteNotification = async (notificationId) => {
+    try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (!storedUser?.id) return;
+
+      const response = await fetch(`http://localhost:5000/notifications/${notificationId}?user_id=${storedUser.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Không thể xóa thông báo");
+      }
+
+      // Remove notification from the list
+      setNotifications((prevNotifications) =>
+        prevNotifications.filter((notification) => notification.id !== notificationId)
+      );
+    } catch (error) {
+      console.error("Lỗi khi xóa thông báo:", error);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -63,11 +137,11 @@ const NavBar = () => {
         onClick={() => {
           const storedUser = JSON.parse(localStorage.getItem("user"));
           if (storedUser?.role === "Student") {
-            navigate("/studenthome"); 
+            navigate("/studenthome");
           } else if (storedUser?.role === "Advisor") {
-            navigate("/teacherhome"); 
+            navigate("/teacherhome");
           } else {
-            navigate("/"); 
+            navigate("/");
           }
         }}
       />
@@ -76,20 +150,20 @@ const NavBar = () => {
         <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
       </div>
       <div className={styles.icons}>
-      <FontAwesomeIcon
-        icon={faHome}
-        onClick={() => {
-          const storedUser = JSON.parse(localStorage.getItem("user"));
-          if (storedUser?.role === "Student") {
-            navigate("/studenthome"); 
-          } else if (storedUser?.role === "Advisor") {
-            navigate("/teacherhome"); 
-          } else {
-            navigate("/"); 
-          }
-        }}
-      />
-      <span>Trang chủ</span>
+        <FontAwesomeIcon
+          icon={faHome}
+          onClick={() => {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (storedUser?.role === "Student") {
+              navigate("/studenthome");
+            } else if (storedUser?.role === "Advisor") {
+              navigate("/teacherhome");
+            } else {
+              navigate("/");
+            }
+          }}
+        />
+        <span>Trang chủ</span>
         <div className={styles.notificationContainer}>
           <div className={styles.icons}>
             <FontAwesomeIcon icon={faBell} onClick={toggleNotifications} className={styles.notificationIcon} />
@@ -100,7 +174,17 @@ const NavBar = () => {
               <ul>
                 {notifications.length > 0 ? (
                   notifications.map((notification) => (
-                    <li key={notification.id}>{notification.message}</li>
+                    <li key={notification.id}>
+                      <div>
+                        <span>{notification.message}</span>
+                        {!notification.is_read && (
+                          <button onClick={() => markNotificationAsRead(notification.id)}>
+                            Đánh dấu đã đọc
+                          </button>
+                        )}
+                        <button onClick={() => deleteNotification(notification.id)}>Xóa</button>
+                      </div>
+                    </li>
                   ))
                 ) : (
                   <li>Không có thông báo</li>

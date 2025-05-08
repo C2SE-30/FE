@@ -132,8 +132,8 @@ const StudentHome = () => {
           </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faComments} className={styles.icon} />
-            <h3>Phản hồi & Hành động</h3>
-            <p>Trả lời thông báo & thực hiện hành động</p>
+            <h3>Chat AI</h3>
+            <p>Chat với AI để cải thiện học tập</p>
             <button href="#" onClick={() => navigate("/chat")}>
               Thực hiện ngay
             </button>
