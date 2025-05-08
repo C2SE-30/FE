@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./StudentHome.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faEnvelopeOpenText, faComments, faBook } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChartLine,
+  faEnvelopeOpenText,
+  faComments,
+  faBook,
+  faBell,
+} from "@fortawesome/free-solid-svg-icons";
 import NavBar from "../component/Navbar";
 import Menu from "../component/Menu";
 import { useNavigate } from "react-router-dom";
@@ -54,13 +60,14 @@ const StudentHome = () => {
       {/* Header */}
       <NavBar />
       <Menu />
+
       {/* Main Content */}
       <main className={styles.container}>
         <div className={styles.studentInfo}>
           <div className={styles.infoHeader}>
             <div className={styles.avatarContainer}>
               <img
-                src={studentInfo.avatar || require("../image/sinhvien.png")}
+                src="https://storage.googleapis.com/a1aa/image/it2tZ94f60tK6dXnxrMDOXFE_9YsWcNWZN5d7qKi658.jpg"
                 alt="Student avatar"
                 className={styles.studentAvatar}
               />
@@ -109,6 +116,12 @@ const StudentHome = () => {
 
         {/* Feature Cards */}
         <div className={styles.featureGrid}>
+          <div className={styles.featureCard}>
+            <FontAwesomeIcon icon={faChartLine} className={styles.icon} />
+            <h3>Kết quả học tập</h3>
+            <p>Xem thống kê học tập & cảnh báo học tập</p>
+            <button>Xem chi tiết</button>
+          </div>
           <div className={styles.featureCard}>
             <FontAwesomeIcon icon={faEnvelopeOpenText} className={styles.icon} />
             <h3>Thông báo & Gợi ý</h3>

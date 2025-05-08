@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AnalysisProvider } from "./context/AnalysisContext"; // Import AnalysisProvider
+import { AnalysisProvider } from "./context/AnalysisContext";
 import StudentProfile from "./dashboard/StudentProfile";
 import StudentHome from "./pages/StudentHome";
 import Login from "./auth/Login";
@@ -15,7 +15,7 @@ import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
-    <AnalysisProvider> {/* Bọc toàn bộ app bằng AnalysisProvider */}
+    <AnalysisProvider>
       <Router>
         <Routes>
           <Route path="/studenthome" element={<StudentHome />} />
@@ -24,7 +24,7 @@ function App() {
           <Route path="/advise" element={<TeacherAdvise />} />
           <Route path="/teacherhome" element={<TeacherHome />} />
           <Route path="/predictstudent" element={<PredictStudent />} />
-          <Route path="studentlist" element={<StudentList />} />
+          <Route path="/studentlist" element={<StudentList />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/chat" element={<ChatAI />} />
           <Route path="/improve" element={<ImproveLearn />} />
