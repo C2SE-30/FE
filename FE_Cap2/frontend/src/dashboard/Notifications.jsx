@@ -1,109 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Notifications.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../component/Navbar";
 import Menu from "../component/Menu";
 
-const notificationsData = [
-  {
-    id: 1,
-    name: "Nguyễn Văn A",
-    message: "Thông báo 1",
-    time: "2 giờ trước",
-    unread: true,
-  },
-  {
-    id: 2,
-    name: "Trần B",
-    message: "Thông báo 2",
-    time: "1 ngày trước",
-    unread: false,
-  },
-  {
-    id: 3,
-    name: "Huỳnh C",
-    message: "Thông báo 3",
-    time: "3 ngày trước",
-    unread: true,
-  },
-  {
-    id: 4,
-    name: "Võ D",
-    message: "Thông báo 4",
-    time: "1 tuần trước",
-    unread: false,
-  },
-  {
-    id: 5,
-    name: "Nguyễn Văn E",
-    message: "Thông báo 5",
-    time: "1 tuần trước",
-    unread: false,
-  },
-  {
-    id: 6,
-    name: "Nguyễn Văn E",
-    message: "Thông báo 6",
-    time: "1 tuần trước",
-    unread: false,
-  },
-  {
-    id: 7,
-    name: "Nguyễn Văn E",
-    message: "Thông báo 7",
-    time: "1 tuần trước",
-    unread: false,
-  },
-];
-
 const Notifications = () => {
   const [filter, setFilter] = useState("all");
+  const [notifications, setNotifications] = useState([]);
   const profileImage =
     "https://storage.googleapis.com/a1aa/image/jsGCRJJoKxJoqRnvaVxZv4qmJXCyqaQrlYzyr5hXxoQ.jpg";
 
+  // Fetch notifications from API
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      const userId = JSON.parse(localStorage.getItem("user"))?.id; // Assuming you are storing user id in localStorage
+      if (!userId) {
+        return;
+      }
+      
+      try {
+        const response = await fetch(`http://localhost:5000/notifications?user_id=${userId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setNotifications(data.notifications); // Save the notifications data to state
+        } else {
+          console.error("Error fetching notifications");
+        }
+      } catch (error) {
+        console.error("Lỗi khi lấy thông báo:", error);
+      }
+    };
+
+    fetchNotifications();
+  }, []);
+
+  // Filter notifications based on the selected filter (all or unread)
   const filteredNotifications =
     filter === "unread"
-      ? notificationsData.filter((item) => item.unread)
-      : notificationsData;
+      ? notifications.filter((item) => item.is_read === false)
+      : notifications;
 
   return (
     <div className={styles.header}>
-    <Navbar />
-    <Menu />
-    <div className={styles.container}>
-      <div className={styles.notifications}>
-        <h2>
-          <FontAwesomeIcon icon={faBell} className={styles.bellIcon} /> Thông báo
-        </h2>
-        <div className={styles.tabs}>
-          <button
-            className={`${styles.tabButton} ${filter === "all" ? styles.active : ""}`}
-            onClick={() => setFilter("all")}
-          >
-            Tất cả
-          </button>
-          <button
-            className={`${styles.tabButton} ${filter === "unread" ? styles.active : ""}`}
-            onClick={() => setFilter("unread")}
-          >
-            Chưa đọc
-          </button>
-        </div>
-        {filteredNotifications.map((item) => (
-          <div key={item.id} className={styles.notificationItem}>
-            <img src={profileImage} alt="User profile" />
-            <div className={styles.content}>
-              <p>
-                <strong>{item.name}</strong> {item.message}
-              </p>
-              <p className={styles.time}>{item.time}</p>
-            </div>
-            {item.unread && <div className={styles.dot}></div>}
+      <Navbar />
+      <Menu />
+      <div className={styles.container}>
+        <div className={styles.notifications}>
+          <h2>
+            <FontAwesomeIcon icon={faBell} className={styles.bellIcon} /> Thông báo
+          </h2>
+          <div className={styles.tabs}>
+            <button
+              className={`${styles.tabButton} ${filter === "all" ? styles.active : ""}`}
+              onClick={() => setFilter("all")}
+            >
+              Tất cả
+            </button>
+            <button
+              className={`${styles.tabButton} ${filter === "unread" ? styles.active : ""}`}
+              onClick={() => setFilter("unread")}
+            >
+              Chưa đọc
+            </button>
           </div>
-        ))}
+          {filteredNotifications.length > 0 ? (
+            filteredNotifications.map((item) => (
+              <div key={item.id} className={styles.notificationItem}>
+                <img src={profileImage} alt="User profile" />
+                <div className={styles.content}>
+                  <p>
+                    <strong>{item.name}</strong> {item.message}
+                  </p>
+                  <p className={styles.time}>{item.created_at}</p>
+                </div>
+                {item.is_read === false && <div className={styles.dot}></div>}
+              </div>
+            ))
+          ) : (
+            <p>Không có thông báo</p>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

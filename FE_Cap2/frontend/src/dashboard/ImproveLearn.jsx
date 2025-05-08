@@ -78,19 +78,7 @@ const ImproveLearn = () => {
     <Menu />
     <div className={styles.mainContainer}>
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.logo}>
-          <i className="fas fa-graduation-cap"></i>
-          <h1>Hệ Thống Quản Lý Tư Vấn Học Tập</h1>
-        </div>
-        <div className={styles.userInfo}>
-          <div className={styles.notification}>
-          <FontAwesomeIcon icon={faBell} className={styles.bell}/>
-            <span className={styles.badge}>3</span>
-          </div>
-          <div className={styles.userAvatar}>SV</div>
-        </div>
-      </div>
+      
 
       <div className={styles.summaryStats}>
         {stats.map(stat => (

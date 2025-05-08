@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./StudentList.module.css";
 import NavBar from "../component/Navbar";
 import Menu from "../component/Menu";
+import { useAnalysis } from "../context/AnalysisContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
